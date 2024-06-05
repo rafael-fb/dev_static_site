@@ -1,0 +1,1310 @@
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+    <title>Mel site</title>
+    <style>
+        /* cspell:disable-file */
+        /* webkit printing magic: print all background colors */
+        html {
+            -webkit-print-color-adjust: exact;
+        }
+
+        * {
+            box-sizing: border-box;
+            -webkit-print-color-adjust: exact;
+        }
+
+        html,
+        body {
+            margin: 0;
+            padding: 0;
+        }
+
+        @media only screen {
+            body {
+                margin: 2em auto;
+                max-width: 900px;
+                color: rgb(55, 53, 47);
+            }
+        }
+
+        body {
+            line-height: 1.5;
+            white-space: pre-wrap;
+        }
+
+        a,
+        a.visited {
+            color: inherit;
+            text-decoration: underline;
+        }
+
+        .pdf-relative-link-path {
+            font-size: 80%;
+            color: #444;
+        }
+
+        h1,
+        h2,
+        h3 {
+            letter-spacing: -0.01em;
+            line-height: 1.2;
+            font-weight: 600;
+            margin-bottom: 0;
+        }
+
+        .page-title {
+            font-size: 2.5rem;
+            font-weight: 700;
+            margin-top: 0;
+            margin-bottom: 0.75em;
+        }
+
+        h1 {
+            font-size: 1.875rem;
+            margin-top: 1.875rem;
+        }
+
+        h2 {
+            font-size: 1.5rem;
+            margin-top: 1.5rem;
+        }
+
+        h3 {
+            font-size: 1.25rem;
+            margin-top: 1.25rem;
+        }
+
+        .source {
+            border: 1px solid #ddd;
+            border-radius: 3px;
+            padding: 1.5em;
+            word-break: break-all;
+        }
+
+        .callout {
+            border-radius: 3px;
+            padding: 1rem;
+        }
+
+        figure {
+            margin: 1.25em 0;
+            page-break-inside: avoid;
+        }
+
+        figcaption {
+            opacity: 0.5;
+            font-size: 85%;
+            margin-top: 0.5em;
+        }
+
+        mark {
+            background-color: transparent;
+        }
+
+        .indented {
+            padding-left: 1.5em;
+        }
+
+        hr {
+            background: transparent;
+            display: block;
+            width: 100%;
+            height: 1px;
+            visibility: visible;
+            border: none;
+            border-bottom: 1px solid rgba(55, 53, 47, 0.09);
+        }
+
+        img {
+            max-width: 100%;
+        }
+
+        @media only print {
+            img {
+                max-height: 100vh;
+                object-fit: contain;
+            }
+        }
+
+        @page {
+            margin: 1in;
+        }
+
+        .collection-content {
+            font-size: 0.875rem;
+        }
+
+        .column-list {
+            display: flex;
+            justify-content: space-between;
+        }
+
+        .column {
+            padding: 0 1em;
+        }
+
+        .column:first-child {
+            padding-left: 0;
+        }
+
+        .column:last-child {
+            padding-right: 0;
+        }
+
+        .table_of_contents-item {
+            display: block;
+            font-size: 0.875rem;
+            line-height: 1.3;
+            padding: 0.125rem;
+        }
+
+        .table_of_contents-indent-1 {
+            margin-left: 1.5rem;
+        }
+
+        .table_of_contents-indent-2 {
+            margin-left: 3rem;
+        }
+
+        .table_of_contents-indent-3 {
+            margin-left: 4.5rem;
+        }
+
+        .table_of_contents-link {
+            text-decoration: none;
+            opacity: 0.7;
+            border-bottom: 1px solid rgba(55, 53, 47, 0.18);
+        }
+
+        table,
+        th,
+        td {
+            border: 1px solid rgba(55, 53, 47, 0.09);
+            border-collapse: collapse;
+        }
+
+        table {
+            border-left: none;
+            border-right: none;
+        }
+
+        th,
+        td {
+            font-weight: normal;
+            padding: 0.25em 0.5em;
+            line-height: 1.5;
+            min-height: 1.5em;
+            text-align: left;
+        }
+
+        th {
+            color: rgba(55, 53, 47, 0.6);
+        }
+
+        ol,
+        ul {
+            margin: 0;
+            margin-block-start: 0.6em;
+            margin-block-end: 0.6em;
+        }
+
+        li > ol:first-child,
+        li > ul:first-child {
+            margin-block-start: 0.6em;
+        }
+
+        ul > li {
+            list-style: disc;
+        }
+
+        ul.to-do-list {
+            padding-inline-start: 0;
+        }
+
+        ul.to-do-list > li {
+            list-style: none;
+        }
+
+        .to-do-children-checked {
+            text-decoration: line-through;
+            opacity: 0.375;
+        }
+
+        ul.toggle > li {
+            list-style: none;
+        }
+
+        ul {
+            padding-inline-start: 1.7em;
+        }
+
+        ul > li {
+            padding-left: 0.1em;
+        }
+
+        ol {
+            padding-inline-start: 1.6em;
+        }
+
+        ol > li {
+            padding-left: 0.2em;
+        }
+
+        .mono ol {
+            padding-inline-start: 2em;
+        }
+
+        .mono ol > li {
+            text-indent: -0.4em;
+        }
+
+        .toggle {
+            padding-inline-start: 0em;
+            list-style-type: none;
+        }
+
+        /* Indent toggle children */
+        .toggle > li > details {
+            padding-left: 1.7em;
+        }
+
+        .toggle > li > details > summary {
+            margin-left: -1.1em;
+        }
+
+        .selected-value {
+            display: inline-block;
+            padding: 0 0.5em;
+            background: rgba(206, 205, 202, 0.5);
+            border-radius: 3px;
+            margin-right: 0.5em;
+            margin-top: 0.3em;
+            margin-bottom: 0.3em;
+            white-space: nowrap;
+        }
+
+        .collection-title {
+            display: inline-block;
+            margin-right: 1em;
+        }
+
+        .page-description {
+            margin-bottom: 2em;
+        }
+
+        .simple-table {
+            margin-top: 1em;
+            font-size: 0.875rem;
+            empty-cells: show;
+        }
+
+        .simple-table td {
+            height: 29px;
+            min-width: 120px;
+        }
+
+        .simple-table th {
+            height: 29px;
+            min-width: 120px;
+        }
+
+        .simple-table-header-color {
+            background: rgb(247, 246, 243);
+            color: black;
+        }
+
+        .simple-table-header {
+            font-weight: 500;
+        }
+
+        time {
+            opacity: 0.5;
+        }
+
+        .icon {
+            display: inline-block;
+            max-width: 1.2em;
+            max-height: 1.2em;
+            text-decoration: none;
+            vertical-align: text-bottom;
+            margin-right: 0.5em;
+        }
+
+        img.icon {
+            border-radius: 3px;
+        }
+
+        .user-icon {
+            width: 1.5em;
+            height: 1.5em;
+            border-radius: 100%;
+            margin-right: 0.5rem;
+        }
+
+        .user-icon-inner {
+            font-size: 0.8em;
+        }
+
+        .text-icon {
+            border: 1px solid #000;
+            text-align: center;
+        }
+
+        .page-cover-image {
+            display: block;
+            object-fit: cover;
+            width: 100%;
+            max-height: 30vh;
+        }
+
+        .page-header-icon {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+        }
+
+        .page-header-icon-with-cover {
+            margin-top: -0.72em;
+            margin-left: 0.07em;
+        }
+
+        .page-header-icon img {
+            border-radius: 3px;
+        }
+
+        .link-to-page {
+            margin: 1em 0;
+            padding: 0;
+            border: none;
+            font-weight: 500;
+        }
+
+        p > .user {
+            opacity: 0.5;
+        }
+
+        td > .user,
+        td > time {
+            white-space: nowrap;
+        }
+
+        input[type="checkbox"] {
+            transform: scale(1.5);
+            margin-right: 0.6em;
+            vertical-align: middle;
+        }
+
+        p {
+            margin-top: 0.5em;
+            margin-bottom: 0.5em;
+        }
+
+        .image {
+            border: none;
+            margin: 1.5em 0;
+            padding: 0;
+            border-radius: 0;
+            text-align: center;
+        }
+
+        .code,
+        code {
+            background: rgba(135, 131, 120, 0.15);
+            border-radius: 3px;
+            padding: 0.2em 0.4em;
+            border-radius: 3px;
+            font-size: 85%;
+            tab-size: 2;
+        }
+
+        code {
+            color: #eb5757;
+        }
+
+        .code {
+            padding: 1.5em 1em;
+        }
+
+        .code-wrap {
+            white-space: pre-wrap;
+            word-break: break-all;
+        }
+
+        .code > code {
+            background: none;
+            padding: 0;
+            font-size: 100%;
+            color: inherit;
+        }
+
+        blockquote {
+            font-size: 1.25em;
+            margin: 1em 0;
+            padding-left: 1em;
+            border-left: 3px solid rgb(55, 53, 47);
+        }
+
+        .bookmark {
+            text-decoration: none;
+            max-height: 8em;
+            padding: 0;
+            display: flex;
+            width: 100%;
+            align-items: stretch;
+        }
+
+        .bookmark-title {
+            font-size: 0.85em;
+            overflow: hidden;
+            text-overflow: ellipsis;
+            height: 1.75em;
+            white-space: nowrap;
+        }
+
+        .bookmark-text {
+            display: flex;
+            flex-direction: column;
+        }
+
+        .bookmark-info {
+            flex: 4 1 180px;
+            padding: 12px 14px 14px;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+        }
+
+        .bookmark-image {
+            width: 33%;
+            flex: 1 1 180px;
+            display: block;
+            position: relative;
+            object-fit: cover;
+            border-radius: 1px;
+        }
+
+        .bookmark-description {
+            color: rgba(55, 53, 47, 0.6);
+            font-size: 0.75em;
+            overflow: hidden;
+            max-height: 4.5em;
+            word-break: break-word;
+        }
+
+        .bookmark-href {
+            font-size: 0.75em;
+            margin-top: 0.25em;
+        }
+
+        .sans {
+            font-family: ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol";
+        }
+
+        .code {
+            font-family: "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace;
+        }
+
+        .serif {
+            font-family: Lyon-Text, Georgia, ui-serif, serif;
+        }
+
+        .mono {
+            font-family: iawriter-mono, Nitti, Menlo, Courier, monospace;
+        }
+
+        .pdf .sans {
+            font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK JP';
+        }
+
+        .pdf:lang(zh-CN) .sans {
+            font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK SC';
+        }
+
+        .pdf:lang(zh-TW) .sans {
+            font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK TC';
+        }
+
+        .pdf:lang(ko-KR) .sans {
+            font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK KR';
+        }
+
+        .pdf .code {
+            font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK JP';
+        }
+
+        .pdf:lang(zh-CN) .code {
+            font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK SC';
+        }
+
+        .pdf:lang(zh-TW) .code {
+            font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK TC';
+        }
+
+        .pdf:lang(ko-KR) .code {
+            font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK KR';
+        }
+
+        .pdf .serif {
+            font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK JP';
+        }
+
+        .pdf:lang(zh-CN) .serif {
+            font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK SC';
+        }
+
+        .pdf:lang(zh-TW) .serif {
+            font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK TC';
+        }
+
+        .pdf:lang(ko-KR) .serif {
+            font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK KR';
+        }
+
+        .pdf .mono {
+            font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK JP';
+        }
+
+        .pdf:lang(zh-CN) .mono {
+            font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK SC';
+        }
+
+        .pdf:lang(zh-TW) .mono {
+            font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK TC';
+        }
+
+        .pdf:lang(ko-KR) .mono {
+            font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK KR';
+        }
+
+        .highlight-default {
+            color: rgba(55, 53, 47, 1);
+        }
+
+        .highlight-gray {
+            color: rgba(120, 119, 116, 1);
+            fill: rgba(120, 119, 116, 1);
+        }
+
+        .highlight-brown {
+            color: rgba(159, 107, 83, 1);
+            fill: rgba(159, 107, 83, 1);
+        }
+
+        .highlight-orange {
+            color: rgba(217, 115, 13, 1);
+            fill: rgba(217, 115, 13, 1);
+        }
+
+        .highlight-yellow {
+            color: rgba(203, 145, 47, 1);
+            fill: rgba(203, 145, 47, 1);
+        }
+
+        .highlight-teal {
+            color: rgba(68, 131, 97, 1);
+            fill: rgba(68, 131, 97, 1);
+        }
+
+        .highlight-blue {
+            color: rgba(51, 126, 169, 1);
+            fill: rgba(51, 126, 169, 1);
+        }
+
+        .highlight-purple {
+            color: rgba(144, 101, 176, 1);
+            fill: rgba(144, 101, 176, 1);
+        }
+
+        .highlight-pink {
+            color: rgba(193, 76, 138, 1);
+            fill: rgba(193, 76, 138, 1);
+        }
+
+        .highlight-red {
+            color: rgba(212, 76, 71, 1);
+            fill: rgba(212, 76, 71, 1);
+        }
+
+        .highlight-gray_background {
+            background: rgba(241, 241, 239, 1);
+        }
+
+        .highlight-brown_background {
+            background: rgba(244, 238, 238, 1);
+        }
+
+        .highlight-orange_background {
+            background: rgba(251, 236, 221, 1);
+        }
+
+        .highlight-yellow_background {
+            background: rgba(251, 243, 219, 1);
+        }
+
+        .highlight-teal_background {
+            background: rgba(237, 243, 236, 1);
+        }
+
+        .highlight-blue_background {
+            background: rgba(231, 243, 248, 1);
+        }
+
+        .highlight-purple_background {
+            background: rgba(244, 240, 247, 0.8);
+        }
+
+        .highlight-pink_background {
+            background: rgba(249, 238, 243, 0.8);
+        }
+
+        .highlight-red_background {
+            background: rgba(253, 235, 236, 1);
+        }
+
+        .block-color-default {
+            color: inherit;
+            fill: inherit;
+        }
+
+        .block-color-gray {
+            color: rgba(120, 119, 116, 1);
+            fill: rgba(120, 119, 116, 1);
+        }
+
+        .block-color-brown {
+            color: rgba(159, 107, 83, 1);
+            fill: rgba(159, 107, 83, 1);
+        }
+
+        .block-color-orange {
+            color: rgba(217, 115, 13, 1);
+            fill: rgba(217, 115, 13, 1);
+        }
+
+        .block-color-yellow {
+            color: rgba(203, 145, 47, 1);
+            fill: rgba(203, 145, 47, 1);
+        }
+
+        .block-color-teal {
+            color: rgba(68, 131, 97, 1);
+            fill: rgba(68, 131, 97, 1);
+        }
+
+        .block-color-blue {
+            color: rgba(51, 126, 169, 1);
+            fill: rgba(51, 126, 169, 1);
+        }
+
+        .block-color-purple {
+            color: rgba(144, 101, 176, 1);
+            fill: rgba(144, 101, 176, 1);
+        }
+
+        .block-color-pink {
+            color: rgba(193, 76, 138, 1);
+            fill: rgba(193, 76, 138, 1);
+        }
+
+        .block-color-red {
+            color: rgba(212, 76, 71, 1);
+            fill: rgba(212, 76, 71, 1);
+        }
+
+        .block-color-gray_background {
+            background: rgba(241, 241, 239, 1);
+        }
+
+        .block-color-brown_background {
+            background: rgba(244, 238, 238, 1);
+        }
+
+        .block-color-orange_background {
+            background: rgba(251, 236, 221, 1);
+        }
+
+        .block-color-yellow_background {
+            background: rgba(251, 243, 219, 1);
+        }
+
+        .block-color-teal_background {
+            background: rgba(237, 243, 236, 1);
+        }
+
+        .block-color-blue_background {
+            background: rgba(231, 243, 248, 1);
+        }
+
+        .block-color-purple_background {
+            background: rgba(244, 240, 247, 0.8);
+        }
+
+        .block-color-pink_background {
+            background: rgba(249, 238, 243, 0.8);
+        }
+
+        .block-color-red_background {
+            background: rgba(253, 235, 236, 1);
+        }
+
+        .select-value-color-uiBlue {
+            background-color: rgba(35, 131, 226, .07);
+        }
+
+        .select-value-color-pink {
+            background-color: rgba(245, 224, 233, 1);
+        }
+
+        .select-value-color-purple {
+            background-color: rgba(232, 222, 238, 1);
+        }
+
+        .select-value-color-green {
+            background-color: rgba(219, 237, 219, 1);
+        }
+
+        .select-value-color-gray {
+            background-color: rgba(227, 226, 224, 1);
+        }
+
+        .select-value-color-transparentGray {
+            background-color: rgba(227, 226, 224, 0);
+        }
+
+        .select-value-color-translucentGray {
+            background-color: rgba(255, 255, 255, 0.0375);
+        }
+
+        .select-value-color-orange {
+            background-color: rgba(250, 222, 201, 1);
+        }
+
+        .select-value-color-brown {
+            background-color: rgba(238, 224, 218, 1);
+        }
+
+        .select-value-color-red {
+            background-color: rgba(255, 226, 221, 1);
+        }
+
+        .select-value-color-yellow {
+            background-color: rgba(253, 236, 200, 1);
+        }
+
+        .select-value-color-blue {
+            background-color: rgba(211, 229, 239, 1);
+        }
+
+        .select-value-color-pageGlass {
+            background-color: undefined;
+        }
+
+        .select-value-color-washGlass {
+            background-color: undefined;
+        }
+
+        .checkbox {
+            display: inline-flex;
+            vertical-align: text-bottom;
+            width: 16;
+            height: 16;
+            background-size: 16px;
+            margin-left: 2px;
+            margin-right: 5px;
+        }
+
+        .checkbox-on {
+            background-image: url("data:image/svg+xml;charset=UTF-8,%3Csvg%20width%3D%2216%22%20height%3D%2216%22%20viewBox%3D%220%200%2016%2016%22%20fill%3D%22none%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%3E%0A%3Crect%20width%3D%2216%22%20height%3D%2216%22%20fill%3D%22%2358A9D7%22%2F%3E%0A%3Cpath%20d%3D%22M6.71429%2012.2852L14%204.9995L12.7143%203.71436L6.71429%209.71378L3.28571%206.2831L2%207.57092L6.71429%2012.2852Z%22%20fill%3D%22white%22%2F%3E%0A%3C%2Fsvg%3E");
+        }
+
+        .checkbox-off {
+            background-image: url("data:image/svg+xml;charset=UTF-8,%3Csvg%20width%3D%2216%22%20height%3D%2216%22%20viewBox%3D%220%200%2016%2016%22%20fill%3D%22none%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%3E%0A%3Crect%20x%3D%220.75%22%20y%3D%220.75%22%20width%3D%2214.5%22%20height%3D%2214.5%22%20fill%3D%22white%22%20stroke%3D%22%2336352F%22%20stroke-width%3D%221.5%22%2F%3E%0A%3C%2Fsvg%3E");
+        }
+
+    </style>
+    <style>
+        body {
+            white-space: unset;
+            background-color: darkslategray;
+            color: white;
+            font-size: 32px;
+        }
+        
+        figure img {
+            width: 100% !important;
+            max-height: 100%;
+            object-fit: contain;
+        }
+        /* Hide all steps by default */
+        .step {
+            display: none;
+        }
+
+        /* Show the active step */
+        .step.active {
+            display: block;
+        }
+
+        /* Style the navigation buttons */
+        .nav-buttons {
+            display: flex;
+            margin-top: 100px;
+            flex-wrap: wrap;
+            gap: 10px;
+
+            background-color: black;
+            padding: 15px 0;
+            box-sizing: border-box;
+            position: fixed;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+        }
+
+        .nav-buttons button {
+            margin: 0 5px;
+            height: 70px;
+            width: 70px;
+            box-sizing: border-box;
+            font-size: 25px;
+            cursor: pointer;
+        }
+
+        button.active {
+            background-color: blueviolet;
+            color: white;
+        }
+    </style>
+</head>
+<body>
+<article id="9bb96ba5-77d1-4c7e-a9e0-0e6722a7a05c" class="page sans">
+    <header><h1 class="page-title">Mel site</h1>
+        <p class="page-description"></p>
+        <table class="properties">
+            <tbody></tbody>
+        </table>
+    </header>
+    <div class="page-body">
+        <ol type="1" id="a67b5b7b-3319-4565-8b4d-4370ddc8c185" class="numbered-list step active" start="1">
+            <li>Crie o arquivo html e garante que ele tenha as tags iniciais:
+                <figure id="e0592d63-da9d-4b1f-a44c-2acb70f9fa85" class="image"><a
+                        href="Mel%20site%209bb96ba577d14c7ea9e00e6722a7a05c/Untitled.png"><img style="width:593px"
+                                                                                               src="Mel%20site%209bb96ba577d14c7ea9e00e6722a7a05c/Untitled.png"/></a>
+                </figure>
+            </li>
+        </ol>
+        <ol type="1" id="2254691c-ec2c-4eba-8b2d-e4d02dc3317e" class="numbered-list step" start="2">
+            <li>Agora, dentro do head, adicione a tag de título<p id="d0d5f630-9c5d-4915-b4aa-78b8a87c5c8b" class="">
+                <code>&lt;title&gt;nome do site&lt;/title&gt;</code></p>
+                <p id="9ab821ee-4780-4971-8c30-df254008dbd7" class="">A ordem das tags dentro do head não importa, pode
+                    colocar o título onde quiser.</p></li>
+        </ol>
+        <ol type="1" id="31859e0f-f853-487b-9cfd-1431d59adb73" class="numbered-list step" start="3">
+            <li>Crie uma pasta chamada css e dentro crie um arquivo chamado index.css.</li>
+        </ol>
+        <ol type="1" id="94d943e0-da31-4745-b94f-c045f4dc22b3" class="numbered-list step" start="4">
+            <li>Faça o link entre o arquivo html e o css adicionando esta tag dentro do head:<p
+                    id="3e7d1a32-a236-4aee-a782-9f814e373457" class=""><code>&lt;link rel=&quot;stylesheet&quot; href=&quot;./css/index.css&quot;&gt;</code>
+            </p></li>
+        </ol>
+        <ol type="1" id="0e5eaaf3-d8bf-4820-9fc9-b3ab09fc9b86" class="numbered-list step" start="5">
+            <li>Por padrão todo site vem com uma margem que deixa uma ‘borda’ branca assim:
+                <figure id="fe4426cf-9393-4807-8092-25ae8f47dda3" class="image"><a
+                        href="Mel%20site%209bb96ba577d14c7ea9e00e6722a7a05c/Untitled%201.png"><img style="width:428px"
+                                                                                                   src="Mel%20site%209bb96ba577d14c7ea9e00e6722a7a05c/Untitled%201.png"/></a>
+                </figure>
+                <p id="9f4a48fd-dd12-4ee0-ad2c-e2b881578eab" class="">Para remove-la, temos que ir no arquivo css e
+                    aplicar <code>margin: 0;</code> no body.</p>
+                <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/prism.min.js"
+                        integrity="sha512-7Z9J3l1+EYfeaPKcGXu3MS/7T+w19WtKQY/n+xzmw4hZhJ9tyYmcUS+4QqAlzhicE5LAfMQSF3iFTK9bQdTxXg=="
+                        crossorigin="anonymous" referrerPolicy="no-referrer"></script>
+                <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism.min.css"
+                      integrity="sha512-tN7Ec6zAFaVSG3TpNAKtk4DOHNpSwKHxxrsiw4GHKESGPs5njn/0sMCUMl2svV4wo4BK/rCP7juYz+zx+l6oeQ=="
+                      crossorigin="anonymous" referrerPolicy="no-referrer"/>
+                <pre id="d94de359-3a04-4c25-bb2f-8b7db41f9b51" class="code"><code class="language-CSS"
+                                                                                  style="white-space:pre-wrap;word-break:break-all">body {
+    margin: 0;
+}</code></pre>
+            </li>
+        </ol>
+        <ol type="1" id="93ebeb85-2402-4677-8509-f6b6df9da2fe" class="numbered-list step" start="6">
+            <li>Agora já podemos aproveitar e definir a cor de fundo do site que será um verde claro, basta inserir uma
+                cor de fundo no body no valor <code>#E4EADCFF</code> .
+            </li>
+        </ol>
+        <ol type="1" id="e93ecb4a-69fe-4692-8883-31ef122b9d06" class="numbered-list step" start="7">
+            <li>Vamos partir pro header:
+                <figure id="9bdb3acd-1dc1-4a12-a127-c3b50a16e060" class="image"><a
+                        href="Mel%20site%209bb96ba577d14c7ea9e00e6722a7a05c/Untitled%202.png"><img style="width:511px"
+                                                                                                   src="Mel%20site%209bb96ba577d14c7ea9e00e6722a7a05c/Untitled%202.png"/></a>
+                </figure>
+                <p id="fe52904a-fffa-4ec4-9f4b-08e0767e2851" class="">Primeiro, o grande bloco verde escuro:
+                <div class="indented"><p id="cda1ae49-ca7b-4c7b-b6e7-05a40c60c05f" class="">No html, dentro do body,
+                    adicione uma div para ele com a classe ‘header’.</p>
+                    <p id="e8e30654-d36c-4233-bc2b-a1936552ce62" class="">No css, estilize o header colocando:</p>
+                    <ul id="eeefb9dc-3a80-4aff-acc4-4cce5ca5ebc3" class="bulleted-list">
+                        <li style="list-style-type:disc">cor de fundo <code>#89998e</code></li>
+                    </ul>
+                    <ul id="dc576556-ba8c-4fd0-bc3d-45988f7f3c52" class="bulleted-list">
+                        <li style="list-style-type:disc">altura (height), pode ser 225px</li>
+                    </ul>
+                    <ul id="3f2704ce-8c04-433e-8eaa-df92457e3ac7" class="bulleted-list">
+                        <li style="list-style-type:disc">largura (width) de 100% pra preencher a tela de um lado ao
+                            outro
+                        </li>
+                    </ul>
+                    <p id="f3c4bb5a-1cad-42e2-a174-6f972aab17b7" class="">Isso fará um grande retangulo verde.</p></div>
+                </p></li>
+        </ol>
+        <ol type="1" id="f53076f5-a7ea-4c4b-8ff2-348dd3316858" class="numbered-list step" start="8">
+            <li>Agora precisamos arredondar o canto inferior esquerdo do header, para isso em seu css temos que usar a
+                propriedade border-radius. O border radius precisa de quatro valores, cada um vai arredondar um canto
+                diferente do retangulo.<p id="57ef19fe-cbe1-47c1-896b-983774baf2da" class="">Para arredondar apenas o
+                    canto inferior esquerdo, temos que modificar o último valor do border-radius: <br/><br/><code>border-radius:
+                        0 0 0 70%;</code></p></li>
+        </ol>
+        <ol type="1" id="1c4c2ab3-f1e8-4398-83bd-6ccb9eb88ef9" class="numbered-list step" start="9">
+            <li>Agora vamos para a imagem de perfil. Dentro do header, adicione uma div que servirá como ‘pai’ da
+                imagem, essa div pode ter a classe ‘picture-container’.
+            </li>
+        </ol>
+        <ol type="1" id="5087d8e9-3a49-4498-9b0b-9f87b10f3aa7" class="numbered-list step" start="10">
+            <li>Vamos posicionar esse picture container primeiro e depois colocar a imagem dentro dele. Então no css
+                estilize o picture container:
+                <ul id="34e4cd82-85f6-485e-9785-7a65e101615a" class="bulleted-list">
+                    <li style="list-style-type:disc">Altura de 150px</li>
+                </ul>
+                <ul id="83b5bf05-c83d-4e6c-b291-bb7cc6b80433" class="bulleted-list">
+                    <li style="list-style-type:disc">Largura de 150px</li>
+                </ul>
+                <ul id="fac2e88d-a9a8-4082-85f2-deb469575a3f" class="bulleted-list">
+                    <li style="list-style-type:disc">Ele terá uma borda branca:<p
+                            id="103d8af7-65a9-45e5-854c-288cf8bcd0ca" class=""><code>border: 4px white solid;</code></p>
+                        <p id="d63494dd-2e35-43af-9e56-2d8a1121cd5f" class="">Esse 4px é a grossura da borda, pode mudar
+                            a vontade.</p></li>
+                </ul>
+                <p id="d6c8a1b2-64cf-42a9-a5e4-a905123a216f" class="">Para que ele fique redondo:</p>
+                <ul id="40c4f7cb-66a0-4c21-af11-8a6af51c5e84" class="bulleted-list">
+                    <li style="list-style-type:disc">border radius com todos os cantos totalmente arredondados:<p
+                            id="c4f028d6-1541-4b8e-a58d-4b14ee95eef8" class=""><code>border-radius: 100% 100% 100%
+                        100%;</code></p></li>
+                </ul>
+            </li>
+        </ol>
+        <ol type="1" id="3c252156-a3a2-4bf0-97aa-d9d239b870fb" class="numbered-list step" start="11">
+            <li>Pronto já temos o container da foto, mas ainda falta posicionar ela no local certo… Ela vai ficar em uma
+                posição meio estranha no header, saindo um pouco para fora dele, em casos como esse, para termos total
+                liberdade na hora de posicionar usamos posição absoluta:
+                <ul id="052ea208-5bb7-466a-bad7-9c10efda452e" class="bulleted-list">
+                    <li style="list-style-type:disc">no .picture-container, adicione <code>position: absolute;</code>
+                    </li>
+                </ul>
+            </li>
+        </ol>
+        <ol type="1" id="a4fb93f9-1056-4bfc-9b36-f4ded7115212" class="numbered-list step" start="12">
+            <li>Para que o position absolute funcione, precisamos ir no elemento pai e adicionar <code>position:
+                relative;</code> , no caso o pai do picture container é o próprio header, então no css do header,
+                adicione position relative.
+            </li>
+        </ol>
+        <ol type="1" id="98fe8782-0b2a-4bf1-951e-4ebdf826a6dd" class="numbered-list step" start="13">
+            <li>Com o position absolute no picture container podemos dizer a localização exata de algo usando
+                <ul id="60f6e4ee-ccb6-4cd3-98d3-0bf4bb141f71" class="bulleted-list">
+                    <li style="list-style-type:disc">left ou right que indica a posição na horizontal</li>
+                </ul>
+                <ul id="0ad8e993-6343-4f57-9a85-ae46fa4819d0" class="bulleted-list">
+                    <li style="list-style-type:disc">top ou bottom que indica a posição na vertical</li>
+                </ul>
+                <p id="31e704d1-31e6-40f5-86ce-ba2046893f8d" class="">Para o nosso caso vamos usar:</p>
+                <ul id="d28636ff-7c20-402f-927e-247ef8fda584" class="bulleted-list">
+                    <li style="list-style-type:disc">bottom: -10px; (valor negativo para que a imagem saia do header)
+                    </li>
+                </ul>
+                <ul id="b48b9da4-8028-4a3f-b431-d026ac23bbbe" class="bulleted-list">
+                    <li style="list-style-type:disc">left: 15px;</li>
+                </ul>
+            </li>
+        </ol>
+        <ol type="1" id="82d658e4-23cb-499c-b36b-6f92c777fcc3" class="numbered-list step" start="14">
+            <li>Com isso já temos o picture container no tamanho e posição corretos, agora no html, dentro do picture
+                container adicione uma tag para a img
+                <ol type="a" id="0f25ee7d-5c32-48b8-b812-7e41ec71f4fc" class="numbered-list" start="1">
+                    <li>no src dessa tag img, coloque o caminho da imagem com o nome correto, aqui no exemplo é
+                        user_pic.png, mas a sua imagem pode ter outro nome:<p id="e0e92367-faa4-4fef-ba3f-e97fae6ce6a5"
+                                                                              class=""><code>&lt;img src=&quot;./images/user_pic.png&quot;
+                            alt=&quot;user picture&quot;&gt;</code></p></li>
+                </ol>
+            </li>
+        </ol>
+        <ol type="1" id="6d6e3d03-077a-4aeb-92ec-7f8ecc016e3c" class="numbered-list step" start="15">
+            <li>Precisamos que a imagem ocupe todo o espaço do picture container, para isso teremos que estilizar a img
+                que está dentro do picture container:
+                <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/prism.min.js"
+                        integrity="sha512-7Z9J3l1+EYfeaPKcGXu3MS/7T+w19WtKQY/n+xzmw4hZhJ9tyYmcUS+4QqAlzhicE5LAfMQSF3iFTK9bQdTxXg=="
+                        crossorigin="anonymous" referrerPolicy="no-referrer"></script>
+                <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism.min.css"
+                      integrity="sha512-tN7Ec6zAFaVSG3TpNAKtk4DOHNpSwKHxxrsiw4GHKESGPs5njn/0sMCUMl2svV4wo4BK/rCP7juYz+zx+l6oeQ=="
+                      crossorigin="anonymous" referrerPolicy="no-referrer"/>
+                <pre id="31ff7467-8954-412a-bf6a-640fc5aada58" class="code"><code class="language-CSS"
+                                                                                  style="white-space:pre-wrap;word-break:break-all">.picture-container img {
+		/* estilos */
+}</code></pre>
+            </li>
+        </ol>
+        <ol type="1" id="7629dda4-467b-432b-80e5-878323152ba9" class="numbered-list step" start="16">
+            <li>Os estilos dessa imagem serão
+                <ul id="313b9452-5d4d-4ab1-a545-1f728436fbeb" class="bulleted-list">
+                    <li style="list-style-type:disc">largura 100%</li>
+                </ul>
+                <ul id="c35c4fbe-3c8c-47aa-8bf9-0f4da6ea8a63" class="bulleted-list">
+                    <li style="list-style-type:disc">altura 100%</li>
+                </ul>
+                <ul id="7450efd5-26ab-40b1-85e0-85fef82d247a" class="bulleted-list">
+                    <li style="list-style-type:disc"><code>object-fit: cover;</code> isso garante que a imagem não vai
+                        ficar distorcida
+                    </li>
+                </ul>
+            </li>
+        </ol>
+        <ol type="1" id="913fce79-282f-4302-952c-ae128f8a3da4" class="numbered-list step" start="17">
+            <li>Se você testar o site agora, irá notar que a imagem está vazando para fora do picture container redondo
+                que haviamos criado, para que a imagem não vaze para fora do circulo, precisamos ir no css do
+                .picture-container e dizer que tudo que vazar dele deve ficar escondido:<p
+                        id="ce282836-eb44-4cbb-9271-9378c2df1411" class=""><code>overflow: hidden;</code></p></li>
+        </ol>
+        <ol type="1" id="40a4646b-0e33-46e4-8328-cc6b9531247b" class="numbered-list step" start="18">
+            <li>Agora vamos para os títulos dentro do header, no html ainda dentro do header, abaixo do picture
+                container, adicione um div com a classe <code>header-content</code> , essa div será o pai dos títulos.
+            </li>
+        </ol>
+        <ol type="1" id="256a3a09-726d-440d-b5ce-4e927cb8e969" class="numbered-list step" start="19">
+            <li>dentro dessa div header content, adicione mais 2 divs, uma para cada linha do título, adicione uma
+                classe para cada uma dessas 2 divs:
+                <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/prism.min.js"
+                        integrity="sha512-7Z9J3l1+EYfeaPKcGXu3MS/7T+w19WtKQY/n+xzmw4hZhJ9tyYmcUS+4QqAlzhicE5LAfMQSF3iFTK9bQdTxXg=="
+                        crossorigin="anonymous" referrerPolicy="no-referrer"></script>
+                <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism.min.css"
+                      integrity="sha512-tN7Ec6zAFaVSG3TpNAKtk4DOHNpSwKHxxrsiw4GHKESGPs5njn/0sMCUMl2svV4wo4BK/rCP7juYz+zx+l6oeQ=="
+                      crossorigin="anonymous" referrerPolicy="no-referrer"/>
+                <pre id="a1ad1627-4452-4611-93bd-ef76b99c6100" class="code"><code class="language-HTML"
+                                                                                  style="white-space:pre-wrap;word-break:break-all">    &lt;div class=&quot;header-content&quot;&gt;
+        &lt;div class=&quot;title-1&quot;&gt;Mel&#x27;s&lt;/div&gt;
+        &lt;div class=&quot;title-2&quot;&gt;little place&lt;/div&gt;
+    &lt;/div&gt;</code></pre>
+            </li>
+        </ol>
+        <ol type="1" id="27df90b8-64f3-481d-acbb-83b1f403175c" class="numbered-list step" start="20">
+            <li>Agora vamos estilizar essas divs no css, vamos começar estilizando o header content
+                <ul id="0f3ea241-5707-48bd-aa5c-98567ac6bb38" class="bulleted-list">
+                    <li style="list-style-type:disc">como todos os textos do header são brancos, já podemos colocar aqui
+                        no pai a cor (a cor será aplicada em todos os textos nas divs filhos) <p
+                                id="a372ecf1-7343-470a-9b3d-115362d66083" class=""><code>color: white;</code></p></li>
+                </ul>
+                <ul id="9950b880-3dfd-4551-b6c6-67a6ffff4996" class="bulleted-list">
+                    <li style="list-style-type:disc">além disso queremos que os textos fiquem centralizados <p
+                            id="029076a2-9983-4e20-beca-fc2acdbbed33" class=""><code>text-align: center;</code></p></li>
+                </ul>
+            </li>
+        </ol>
+        <ol type="1" id="4aa83896-6966-4f0d-bdf6-41d698b54b76" class="numbered-list step" start="21">
+            <li>Já vamos definir o tamanho das fontes dos títulos usando <code>font-size</code>, como cada linha tem um
+                tamanho diferente, nós demos uma classe diferente para cada:<p id="edf1b5a7-239e-4cfc-960d-05e76c376260"
+                                                                               class=""><code>title-1</code> e <code>title-2</code>
+                </p>
+                <ul id="0f46e74e-8709-4de0-9a28-eebd57215678" class="bulleted-list">
+                    <li style="list-style-type:disc">para o title-1 dê um font size de 50px</li>
+                </ul>
+                <ul id="89d2c05e-baf1-4e6c-a2bd-f92a92dc7cb7" class="bulleted-list">
+                    <li style="list-style-type:disc">para o title-2 dê um font size de 40px</li>
+                </ul>
+            </li>
+        </ol>
+        <ol type="1" id="6ba9bfdf-1584-4ff8-a4ca-1e7eb1481359" class="numbered-list step" start="22">
+            <li>Agora precisamos mover o header-content para a posição certa, para isso, no css, vamos no elemento pai
+                do header-content que é o elemento de classe header e adicionar umas opções de estilo:
+                <ul id="782fa832-4669-423e-b7cd-d4e7ae481ac2" class="bulleted-list">
+                    <li style="list-style-type:disc">display flex - isso permite controlar melhor a posição dos filhos,
+                        então estamos adicionando isso no header, para controlar melhor a posição do seu filho header
+                        content
+                    </li>
+                </ul>
+            </li>
+        </ol>
+        <ol type="1" id="f55ad64a-4007-4125-9071-0c120e6bd16f" class="numbered-list step" start="23">
+            <li>Agora o header content com os títulos já pode ser movido para a posição certa usando margin:
+                <ul id="e390b823-17e8-40c1-9f34-4073d403c6b3" class="bulleted-list">
+                    <li style="list-style-type:disc">margin: auto; - isso irá coloca-lo bem no meio</li>
+                </ul>
+                <ul id="b83d96df-9e85-4016-ac36-deb40f77a206" class="bulleted-list">
+                    <li style="list-style-type:disc">mas como bem no meio não é o ideal, podemos também aplicar
+                        margin-left de valor 45%
+                    </li>
+                </ul>
+            </li>
+        </ol>
+        <ol type="1" id="fe6a13d3-c4de-4ce7-8ebc-b11b863b9421" class="numbered-list step" start="24">
+            <li>Bem melhor, agora podemos ir para o botão, no html o botão ficará dentro do header content e abaixo do
+                title-2, coloque a classe header-button nele
+                <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/prism.min.js"
+                        integrity="sha512-7Z9J3l1+EYfeaPKcGXu3MS/7T+w19WtKQY/n+xzmw4hZhJ9tyYmcUS+4QqAlzhicE5LAfMQSF3iFTK9bQdTxXg=="
+                        crossorigin="anonymous" referrerPolicy="no-referrer"></script>
+                <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism.min.css"
+                      integrity="sha512-tN7Ec6zAFaVSG3TpNAKtk4DOHNpSwKHxxrsiw4GHKESGPs5njn/0sMCUMl2svV4wo4BK/rCP7juYz+zx+l6oeQ=="
+                      crossorigin="anonymous" referrerPolicy="no-referrer"/>
+                <pre id="d67a5e73-9351-42ed-9e0f-7fee46e180f0" class="code"><code class="language-HTML"
+                                                                                  style="white-space:pre-wrap;word-break:break-all">    &lt;div class=&quot;header-content&quot;&gt;
+        &lt;div class=&quot;title-1&quot;&gt;Mel&#x27;s&lt;/div&gt;
+        &lt;div class=&quot;title-2&quot;&gt;little place&lt;/div&gt;
+        &lt;button class=&quot;header-button&quot;&gt;fale comigo&lt;/button&gt;
+    &lt;/div&gt;</code></pre>
+            </li>
+        </ol>
+        <ol type="1" id="d529aba4-3dac-45bb-a2a8-5ce10f2dec28" class="numbered-list step" start="25">
+            <li>no css, vamos estilizar o header-button:
+                <ul id="1323735a-762f-45ff-b456-8bfa6606ee42" class="bulleted-list">
+                    <li style="list-style-type:disc">para a cor de fundo do botão, coloque transparent</li>
+                </ul>
+                <ul id="b175da3d-209b-4824-b65f-12fac3951e03" class="bulleted-list">
+                    <li style="list-style-type:disc">para a borda, coloque 2px cor branca e linha solida<p
+                            id="f07616d6-0618-47b6-9a20-59eb042f1426" class=""><code>border: 2px white solid;</code></p>
+                    </li>
+                </ul>
+                <ul id="ca4c3cae-e5d7-4079-a5c2-7eedcbd73d2a" class="bulleted-list">
+                    <li style="list-style-type:disc">a cor do texto do botão pode ser branca com color: white;</li>
+                </ul>
+                <ul id="ac87f16a-76a9-4773-8d70-d3267f283177" class="bulleted-list">
+                    <li style="list-style-type:disc">o font size pode ser 20px</li>
+                </ul>
+                <ul id="821a608e-2dd6-4b48-b745-0d7d9d744a8d" class="bulleted-list">
+                    <li style="list-style-type:disc">para arredondar as bordas usamos<p
+                            id="fead36be-8c04-4e76-bfd6-de607c96f2c2" class=""><code>border-radius: 25px 25px 25px
+                        25px</code></p></li>
+                </ul>
+                <ul id="9b8a3368-7c26-42e1-9097-038635c95129" class="bulleted-list">
+                    <li style="list-style-type:disc">A borda está muito colada no texto do botão, precisamos engordar o
+                        botão um pouco para corrigir isso, fazemos isso com o padding
+                    </li>
+                </ul>
+                <ul id="c99d2120-1f12-4b1a-b979-54f60039db30" class="bulleted-list">
+                    <li style="list-style-type:disc">o padding pode receber 2 valores, o primeiro valor cresce pra cima
+                        e pra baixo e o segundo valor cresce o elemento para os lados<p
+                                id="e4b58b29-5f79-4b81-9246-873b46ce6966" class=""><code>padding: 5px 25px;</code></p>
+                    </li>
+                </ul>
+                <ul id="b6565c15-a1be-41d4-8674-be51921194c1" class="bulleted-list">
+                    <li style="list-style-type:disc">Agora só falta distanciar um pouco o botão do último título,
+                        podemos usar um margin-top com valor 15px para isso.
+                    </li>
+                </ul>
+            </li>
+        </ol>
+        <ol type="1" id="8574edc1-5b62-4132-96d2-0c579935dffb" class="numbered-list step" start="26">
+            <li>Agora podemos ir para o desenho da estrela no canto do header, para isso, no html adicione uma div
+                dentro do header, abaixo do header content, essa div pode ter a clsse start-container
+            </li>
+        </ol>
+        <ol type="1" id="a61363b3-5e2d-4bdf-94e1-1c608fcd4aac" class="numbered-list step" start="27">
+            <li>usaremos a star container para posicionar a estrela, mas a estrela em si será uma tag img dentro de star
+                container, lembre de colocar o nome correto da imagem no src da imagem, aqui no exemplo é star.png
+                <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/prism.min.js"
+                        integrity="sha512-7Z9J3l1+EYfeaPKcGXu3MS/7T+w19WtKQY/n+xzmw4hZhJ9tyYmcUS+4QqAlzhicE5LAfMQSF3iFTK9bQdTxXg=="
+                        crossorigin="anonymous" referrerPolicy="no-referrer"></script>
+                <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism.min.css"
+                      integrity="sha512-tN7Ec6zAFaVSG3TpNAKtk4DOHNpSwKHxxrsiw4GHKESGPs5njn/0sMCUMl2svV4wo4BK/rCP7juYz+zx+l6oeQ=="
+                      crossorigin="anonymous" referrerPolicy="no-referrer"/>
+                <pre id="b89d89b2-b5c5-4fbf-bd78-b13fba790473" class="code"><code class="language-HTML"
+                                                                                  style="white-space:pre-wrap;word-break:break-all">&lt;div class=&quot;star-container&quot;&gt;
+    &lt;img src=&quot;./images/star.png&quot; alt=&quot;star icon&quot;&gt;
+&lt;/div&gt;</code></pre>
+            </li>
+        </ol>
+        <ol type="1" id="edd33167-4315-4882-ac00-afc529585206" class="numbered-list step" start="28">
+            <li>agora no css, vamos estilizar o star-container, usaremos position absolute para posiciona-lo livremente
+                sem influenciar na posição do títulos
+            </li>
+        </ol>
+        <ol type="1" id="01733c32-0312-4151-a5c4-8c37a4ef029d" class="numbered-list step" start="29">
+            <li>Com o star container tendo position absolute, podemos dizer que queremos ele grudado na direita usando
+                right: 0;
+            </li>
+        </ol>
+        <ol type="1" id="6d724712-a12c-45f8-82f7-eb95f477969a" class="numbered-list step" start="30">
+            <li>O tamanho do star container deve ser altura 100% e largura de 50px</li>
+        </ol>
+        <ol type="1" id="4030b94f-443d-423a-a886-ad06c9b1952f" class="numbered-list step" start="31">
+            <li>Agora que já posicionas o container da estrela no local correto, vamos estilizar a imagem dentro do star
+                container
+                <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/prism.min.js"
+                        integrity="sha512-7Z9J3l1+EYfeaPKcGXu3MS/7T+w19WtKQY/n+xzmw4hZhJ9tyYmcUS+4QqAlzhicE5LAfMQSF3iFTK9bQdTxXg=="
+                        crossorigin="anonymous" referrerPolicy="no-referrer"></script>
+                <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism.min.css"
+                      integrity="sha512-tN7Ec6zAFaVSG3TpNAKtk4DOHNpSwKHxxrsiw4GHKESGPs5njn/0sMCUMl2svV4wo4BK/rCP7juYz+zx+l6oeQ=="
+                      crossorigin="anonymous" referrerPolicy="no-referrer"/>
+                <pre id="42653b5a-8b95-4646-b1f1-1fb098c45efd" class="code"><code class="language-HTML"
+                                                                                  style="white-space:pre-wrap;word-break:break-all">.star-container img {
+	/* estilos para o img dentro de .star-container */
+}</code></pre>
+            </li>
+        </ol>
+        <ol type="1" id="961ac857-8e23-4cdc-988d-d36629486985" class="numbered-list step" start="32">
+            <li>Os estilos dessa imagem serão:
+                <ul id="6e1ac4fa-393d-4faf-bd36-3dd4c722e931" class="bulleted-list">
+                    <li style="list-style-type:disc">width (largura) de 100%</li>
+                </ul>
+                <ul id="80c4db5c-34b5-453e-9392-344114c3ca01" class="bulleted-list">
+                    <li style="list-style-type:disc">altura (height) de 50%</li>
+                </ul>
+                <ul id="11ff53ec-ef26-452d-b6a1-7aeb1697a28c" class="bulleted-list">
+                    <li style="list-style-type:disc">object-fit: contain; - para que a imagem não se distorça</li>
+                </ul>
+            </li>
+        </ol>
+        <ol type="1" id="e66f1fee-5930-44e6-a787-1b40a9963861" class="numbered-list step" start="33">
+            <li>Agora estamos quase lá, mas a imagem não está no meio, para que ela fique no meio, vamos precisar
+                adicionar margin: auto;
+            </li>
+        </ol>
+        <ol type="1" id="787b2885-2213-47bc-ac20-aa666929af6f" class="numbered-list step" start="34">
+            <li>O margin auto só functiona se elemento pai for display flex, então vamo no css do .start-container e
+                adicionar display flex
+            </li>
+        </ol>
+        <p id="04a90dc5-2008-4245-9b35-746a6ad78c1d" class=""></p>
+        <!-- Navigation buttons -->
+        <div class="nav-buttons" id="nav-buttons"></div>
+    </div>
+</article>
+<span class="sans" style="font-size:14px;padding-top:2em"></span>
+<script>
+    let currentActiveButton;
+    
+    // JavaScript to handle step navigation
+    document.addEventListener('DOMContentLoaded', function() {
+        const steps = document.querySelectorAll('.step');
+        const navButtonsContainer = document.getElementById('nav-buttons');
+
+        steps.forEach((step, index) => {
+            const button = document.createElement('button');
+            button.textContent = index + 1;
+            
+            if (index === 0) {
+                button.classList.add('active');
+            }
+            
+            button.addEventListener('click', () => {
+                steps.forEach(s => s.classList.remove('active'));
+                steps[index].classList.add('active');
+
+                if (currentActiveButton) {
+                    currentActiveButton.classList.remove('active');
+                }
+                
+                button.classList.add('active');
+                currentActiveButton = button;
+            });
+            navButtonsContainer.appendChild(button);
+        });
+    });
+</script>
+</body>
+</html>
